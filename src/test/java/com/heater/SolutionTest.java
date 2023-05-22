@@ -16,8 +16,8 @@ public class SolutionTest {
         int[] heaters2 = new int[]{2, 8};
         int radius2 = solution.findMinRadius(houses2, heaters2);
         assertEquals(3, radius2);
-        int[] houses3 = new int[]{ 3,7,50,53,54};
-        int[] heaters3 = new int[]{4,11,13,14,51};
+        int[] houses3 = new int[]{3, 7, 50, 53, 54};
+        int[] heaters3 = new int[]{4, 11, 13, 14, 51};
         int radius3 = solution.findMinRadiusDoublePoints(houses3, heaters3);
         assertEquals(3, radius3);
     }
