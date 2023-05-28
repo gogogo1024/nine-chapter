@@ -54,12 +54,13 @@ public class Solution {
     }
 
     /**
-     * 二分法查询
+     * 二分法查找
+     * 对于每个下标start,让它作为左边界，
      *
      * @param prefixSum 数组前缀和
      * @param start     开始位置
      * @param s         判定值
-     * @return 大于等于s的最小右边界
+     * @return 大于等于s的最靠左的右边界
      */
     public int getEndOfSubarray(int[] prefixSum, int start, int s) {
         int left = start, right = prefixSum.length - 2;

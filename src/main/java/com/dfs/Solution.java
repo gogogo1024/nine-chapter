@@ -41,7 +41,7 @@ public class Solution {
             for (int j = 0; j < word.length(); j++) {
                 String prefix = word.substring(0, j + 1);
                 if (!prefixToWords.containsKey(prefix)) {
-                    prefixToWords.put(prefix, new ArrayList<String>());
+                    prefixToWords.put(prefix, new ArrayList<>());
                 }
                 prefixToWords.get(prefix).add(word);
             }

@@ -16,9 +16,14 @@ public class SolutionTest {
         assertEquals(14, rst2);
         String source1 = "abc", target1 = "ac";
         String source2 = "abcdadcda", target2 = "accb";
+        String source3 = "abababababab", target3 = "abc";
+
         String rst3 = solution.minWindow(source1, target1);
         assertEquals("abc", rst3);
         String rst4 = solution.minWindow(source2, target2);
         assertEquals("bcdadc", rst4);
+
+        String rst5 = solution.minWindow(source3, target3);
+        assertEquals("", rst5);
     }
 }

@@ -40,6 +40,7 @@ public class Solution {
                 Character temp = s.charAt(j);
                 int numOfChar = counter.getOrDefault(temp, 0);
                 counter.put(temp, numOfChar + 1);
+                // 说明一开始是没有这个字符的
                 if (counter.get(temp) == 1) {
                     diffCharCount++;
                 }
@@ -51,6 +52,7 @@ public class Solution {
             // 移动i之前删除i位置字符
             Character startTemp = s.charAt(i);
             counter.put(startTemp, counter.get(startTemp) - 1);
+            // 说明没有一个startTemp字符了
             if (counter.get(startTemp) == 0) {
                 diffCharCount--;
             }
@@ -69,6 +71,9 @@ public class Solution {
     /**
      * source中包含最短target中每一个字符的子串
      * 时间复杂度 O(n+m),空间复杂度 O(|target|+|source|)
+     * 统计target中字符的数量
+     * 如果当前字符的数量恰好满足或恰好不满足要求，更新计数器
+     * 对于合适的子串，更新子串的起点和长度,将答案更新为更短的子串
      *
      * @param source 源字符
      * @param target 目标字符
@@ -103,15 +108,22 @@ public class Solution {
                 int numOfChar = sourceCount.getOrDefault(source.charAt(j), 0);
                 sourceCount.put(source.charAt(j), numOfChar + 1);
                 // Integer 比较 equals
+                // 刚好符合条件
                 if (sourceCount.get(source.charAt(j)).equals(targetCount.get(source.charAt(j)))) {
                     matchedCharCount++;
 
                 }
                 j++;
             }
+            // 此时有以下2种情况
+            // 1. j <= sLen && matchedCharCount == targetCount.size()
+            // 2. j == sLen && matchedCharCount <= targetCount.size()
+            if (i == 0 && j == sLen && matchedCharCount < targetCount.size()) {
+                return "";
+            }
             // 匹配包含target所有字符的长度
             if (matchedCharCount == targetCount.size()) {
-                // 每次都比较j-i的长度没，找最小，同时更新起始位置start
+                // 每次都比较j-i的长度，找最小，同时更新起始位置start
                 // j 指向时右边界的下一个位置，
                 if (substringLength > j - i) {
                     substringLength = j - i;

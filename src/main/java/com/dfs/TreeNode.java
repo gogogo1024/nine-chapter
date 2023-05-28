@@ -7,6 +7,8 @@ public class TreeNode {
 
     TreeNode(int x) {
         val = x;
+        this.left = null;
+        this.right = null;
     }
 
 }
